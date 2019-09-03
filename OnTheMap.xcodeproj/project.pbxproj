@@ -8,20 +8,52 @@
 
 /* Begin PBXBuildFile section */
 		58E7F884231A10E600E2D63C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F883231A10E600E2D63C /* AppDelegate.swift */; };
-		58E7F886231A10E600E2D63C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F885231A10E600E2D63C /* ViewController.swift */; };
 		58E7F889231A10E600E2D63C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E7F887231A10E600E2D63C /* Main.storyboard */; };
 		58E7F88B231A10E600E2D63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58E7F88A231A10E600E2D63C /* Assets.xcassets */; };
 		58E7F88E231A10E600E2D63C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E7F88C231A10E600E2D63C /* LaunchScreen.storyboard */; };
+		58E7F896231AC52300E2D63C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F895231AC52300E2D63C /* TableViewController.swift */; };
+		58E7F898231AC6C500E2D63C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F897231AC6C500E2D63C /* MapViewController.swift */; };
+		58E7F89C231ACD8D00E2D63C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F89B231ACD8D00E2D63C /* LoginViewController.swift */; };
+		58E7F89E231AD63200E2D63C /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F89D231AD63200E2D63C /* EditViewController.swift */; };
+		58E7F8A8231AE4FF00E2D63C /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8A7231AE4FF00E2D63C /* LoginRequest.swift */; };
+		58E7F8AA231AE55500E2D63C /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8A9231AE55500E2D63C /* LogoutRequest.swift */; };
+		58E7F8AC231AE5E600E2D63C /* PostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8AB231AE5E600E2D63C /* PostSession.swift */; };
+		58E7F8AE231AE72A00E2D63C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8AD231AE72A00E2D63C /* Location.swift */; };
+		58E7F8B2231AEC4700E2D63C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8B1231AEC4700E2D63C /* LoginResponse.swift */; };
+		58E7F8B4231AEE0B00E2D63C /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8B3231AEE0B00E2D63C /* LogoutResponse.swift */; };
+		58E7F8B6231AEE8B00E2D63C /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8B5231AEE8B00E2D63C /* LocationResponse.swift */; };
+		58E7F8B8231AF06C00E2D63C /* UserDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8B7231AF06C00E2D63C /* UserDataResponse.swift */; };
+		58E7F8BA231AF3FE00E2D63C /* SetLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8B9231AF3FE00E2D63C /* SetLocationResponse.swift */; };
+		58E7F8BC231AF61300E2D63C /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8BB231AF61300E2D63C /* LocationClient.swift */; };
+		58E7F8C0231C128B00E2D63C /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8BF231C128B00E2D63C /* AddViewController.swift */; };
+		58E7F8C2231C60E600E2D63C /* OpenCageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8C1231C60E600E2D63C /* OpenCageClient.swift */; };
+		58E7F8C4231C647800E2D63C /* OpenCageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F8C3231C647800E2D63C /* OpenCageResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		58E7F880231A10E600E2D63C /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E7F883231A10E600E2D63C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		58E7F885231A10E600E2D63C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		58E7F888231A10E600E2D63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58E7F88A231A10E600E2D63C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58E7F88D231A10E600E2D63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58E7F88F231A10E600E2D63C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58E7F895231AC52300E2D63C /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		58E7F897231AC6C500E2D63C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		58E7F89B231ACD8D00E2D63C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		58E7F89D231AD63200E2D63C /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		58E7F8A7231AE4FF00E2D63C /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		58E7F8A9231AE55500E2D63C /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
+		58E7F8AB231AE5E600E2D63C /* PostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSession.swift; sourceTree = "<group>"; };
+		58E7F8AD231AE72A00E2D63C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		58E7F8B1231AEC4700E2D63C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		58E7F8B3231AEE0B00E2D63C /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
+		58E7F8B5231AEE8B00E2D63C /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
+		58E7F8B7231AF06C00E2D63C /* UserDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataResponse.swift; sourceTree = "<group>"; };
+		58E7F8B9231AF3FE00E2D63C /* SetLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocationResponse.swift; sourceTree = "<group>"; };
+		58E7F8BB231AF61300E2D63C /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
+		58E7F8BF231C128B00E2D63C /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		58E7F8C1231C60E600E2D63C /* OpenCageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCageClient.swift; sourceTree = "<group>"; };
+		58E7F8C3231C647800E2D63C /* OpenCageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCageResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +87,85 @@
 			isa = PBXGroup;
 			children = (
 				58E7F883231A10E600E2D63C /* AppDelegate.swift */,
-				58E7F885231A10E600E2D63C /* ViewController.swift */,
+				58E7F88F231A10E600E2D63C /* Info.plist */,
+				58E7F8A2231ADF0600E2D63C /* Model */,
+				58E7F8A0231ADD5600E2D63C /* Controller */,
+				58E7F8A1231ADE7300E2D63C /* Assets */,
+			);
+			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		58E7F8A0231ADD5600E2D63C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				58E7F89B231ACD8D00E2D63C /* LoginViewController.swift */,
+				58E7F897231AC6C500E2D63C /* MapViewController.swift */,
+				58E7F895231AC52300E2D63C /* TableViewController.swift */,
+				58E7F89D231AD63200E2D63C /* EditViewController.swift */,
+				58E7F8BF231C128B00E2D63C /* AddViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		58E7F8A1231ADE7300E2D63C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
 				58E7F887231A10E600E2D63C /* Main.storyboard */,
 				58E7F88A231A10E600E2D63C /* Assets.xcassets */,
 				58E7F88C231A10E600E2D63C /* LaunchScreen.storyboard */,
-				58E7F88F231A10E600E2D63C /* Info.plist */,
 			);
-			path = OnTheMap;
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		58E7F8A2231ADF0600E2D63C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58E7F8A3231ADF1300E2D63C /* Data */,
+				58E7F8A6231AE1FE00E2D63C /* Client */,
+				58E7F8A5231AE1F500E2D63C /* Requests */,
+				58E7F8A4231AE1EE00E2D63C /* Responses */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		58E7F8A3231ADF1300E2D63C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		58E7F8A4231AE1EE00E2D63C /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				58E7F8AD231AE72A00E2D63C /* Location.swift */,
+				58E7F8B1231AEC4700E2D63C /* LoginResponse.swift */,
+				58E7F8B3231AEE0B00E2D63C /* LogoutResponse.swift */,
+				58E7F8B7231AF06C00E2D63C /* UserDataResponse.swift */,
+				58E7F8B5231AEE8B00E2D63C /* LocationResponse.swift */,
+				58E7F8B9231AF3FE00E2D63C /* SetLocationResponse.swift */,
+				58E7F8C3231C647800E2D63C /* OpenCageResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		58E7F8A5231AE1F500E2D63C /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				58E7F8A7231AE4FF00E2D63C /* LoginRequest.swift */,
+				58E7F8A9231AE55500E2D63C /* LogoutRequest.swift */,
+				58E7F8AB231AE5E600E2D63C /* PostSession.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		58E7F8A6231AE1FE00E2D63C /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				58E7F8BB231AF61300E2D63C /* LocationClient.swift */,
+				58E7F8C1231C60E600E2D63C /* OpenCageClient.swift */,
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +239,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58E7F886231A10E600E2D63C /* ViewController.swift in Sources */,
+				58E7F8B4231AEE0B00E2D63C /* LogoutResponse.swift in Sources */,
+				58E7F89E231AD63200E2D63C /* EditViewController.swift in Sources */,
+				58E7F89C231ACD8D00E2D63C /* LoginViewController.swift in Sources */,
+				58E7F896231AC52300E2D63C /* TableViewController.swift in Sources */,
+				58E7F8B8231AF06C00E2D63C /* UserDataResponse.swift in Sources */,
+				58E7F8A8231AE4FF00E2D63C /* LoginRequest.swift in Sources */,
+				58E7F8B6231AEE8B00E2D63C /* LocationResponse.swift in Sources */,
+				58E7F8C0231C128B00E2D63C /* AddViewController.swift in Sources */,
+				58E7F8BC231AF61300E2D63C /* LocationClient.swift in Sources */,
+				58E7F8C2231C60E600E2D63C /* OpenCageClient.swift in Sources */,
+				58E7F8AE231AE72A00E2D63C /* Location.swift in Sources */,
+				58E7F8AA231AE55500E2D63C /* LogoutRequest.swift in Sources */,
+				58E7F8C4231C647800E2D63C /* OpenCageResponse.swift in Sources */,
 				58E7F884231A10E600E2D63C /* AppDelegate.swift in Sources */,
+				58E7F8AC231AE5E600E2D63C /* PostSession.swift in Sources */,
+				58E7F8B2231AEC4700E2D63C /* LoginResponse.swift in Sources */,
+				58E7F8BA231AF3FE00E2D63C /* SetLocationResponse.swift in Sources */,
+				58E7F898231AC6C500E2D63C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
