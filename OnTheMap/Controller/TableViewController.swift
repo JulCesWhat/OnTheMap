@@ -16,12 +16,12 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return LocationClient.studentLocation.count
+        return LocationClient.studentLocations.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell")!
-        let location = LocationClient.studentLocation[(indexPath as NSIndexPath).row]
+        let location = LocationClient.studentLocations[(indexPath as NSIndexPath).row]
         
         // Set the name and image
         cell.textLabel?.text = location.firstName + " " + location.lastName
@@ -32,7 +32,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let location = LocationClient.studentLocation[(indexPath as NSIndexPath).row]
+        let location = LocationClient.studentLocations[(indexPath as NSIndexPath).row]
         if !location.mediaURL.isEmpty {
             let app = UIApplication.shared
             app.open(URL(string: location.mediaURL)!)
@@ -41,6 +41,17 @@ class TableViewController: UITableViewController {
     
     
     @IBAction func editLocation(_ sender: Any) {
-        performSegue(withIdentifier: "editLocation", sender: nil)
+        if LocationClient.userLocation != nil {
+            let alert = UIAlertController(title: "Do you want to update your location?", message: "You have already posted a student location. Would you like to override your current location?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                self.performSegue(withIdentifier: "editLocation", sender: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+        } else {
+            performSegue(withIdentifier: "editLocation", sender: nil)
+        }
     }
 }

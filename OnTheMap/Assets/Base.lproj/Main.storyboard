@@ -18,21 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kS6-Tb-BHn">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kS6-Tb-BHn" customClass="OtmTextField" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="48" y="380" width="318" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eFd-Jj-58A">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eFd-Jj-58A" customClass="OtmTextField" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="48" y="433" width="318" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uX-tb-J5K">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uX-tb-J5K" customClass="OtmButton" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="48" y="487" width="318" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
@@ -53,6 +53,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HYi-Ik-VP7"/>
                     <connections>
+                        <outlet property="btnLogin" destination="6uX-tb-J5K" id="Enk-Js-19h"/>
                         <outlet property="tfEmail" destination="kS6-Tb-BHn" id="Brb-bw-kcn"/>
                         <outlet property="tfPassword" destination="eFd-Jj-58A" id="BMv-aN-V6P"/>
                         <segue destination="CYT-gZ-sCe" kind="presentation" identifier="completeLogin" id="xDg-Wr-hXO"/>
@@ -86,7 +87,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="bWx-h8-JRe">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="cUf-fX-gyN"/>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icon_addpin" id="ZOb-oh-hKi">
                                 <connections>
@@ -126,7 +126,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwh-hT-f8b">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwh-hT-f8b" customClass="OtmButton" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="49" y="436" width="316" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="FIND LOCATION"/>
@@ -166,7 +166,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7z-Gf-2i6">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7z-Gf-2i6" customClass="OtmButton" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="68" y="743" width="279" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Finish"/>
@@ -215,7 +215,6 @@
                         <viewLayoutGuide key="safeArea" id="4JI-u4-Qqx"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="uMb-JN-nr0">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="U2f-nQ-fmg"/>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icon_addpin" id="aus-PZ-vMo">
                                 <connections>

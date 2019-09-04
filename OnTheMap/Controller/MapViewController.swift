@@ -16,19 +16,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        if LocationClient.studentLocation.count == 0 {
+        if LocationClient.studentLocations.count == 0 {
             LocationClient.getUserLocations(completion: getUserLocations(locations:error:))
         } else {
-            getUserLocations(locations: LocationClient.studentLocation, error: nil)
+            getUserLocations(locations: LocationClient.studentLocations, error: nil)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if LocationClient.userLocationUpdated {
+            mapView.removeAnnotations(mapView.annotations)
+            getUserLocations(locations: LocationClient.studentLocations, error: nil)
+            LocationClient.userLocationUpdated = false
         }
     }
     
     func getUserLocations(locations: [Location], error: Error?) {
-        
-        // The "locations" array is an array of dictionary objects that are similar to the JSON
-        // data that you can download from parse.
-//        let locations = hardCodedLocationData()
-        
         // We will create an MKPointAnnotation for each dictionary in "locations". The
         // point annotations will be stored in this array, and then provided to the map view.
         var annotations = [MKPointAnnotation]()
@@ -36,26 +40,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // The "locations" array is loaded with the sample data below. We are using the dictionaries
         // to create map annotations. This would be more stylish if the dictionaries were being
         // used to create custom structs. Perhaps StudentLocation structs.
-        
         for location in locations {
-            
-            // The lat and long are used to create a CLLocationCoordinates2D instance.
-            let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-            
             // Here we create the annotation and set its coordiate, title, and subtitle properties
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(location.firstName) \(location.lastName)"
-            annotation.subtitle = location.mediaURL
+            let annotation = createAnnotation(location: location)
             
             // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)
         }
         
-        LocationClient.studentLocation = locations
+        LocationClient.studentLocations = locations
         
         // When the array is complete, we add the annotations to the map.
         self.mapView.addAnnotations(annotations)
+    }
+    
+    func createAnnotation(location: Location) -> MKPointAnnotation {
+        let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        
+        // Here we create the annotation and set its coordiate, title, and subtitle properties
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "\(location.firstName) \(location.lastName)"
+        annotation.subtitle = location.mediaURL
+        return annotation
     }
     
     // Here we create a view with a "right callout accessory view". You might choose to look into other
@@ -92,7 +99,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func editLocation(_ sender: Any) {
-        performSegue(withIdentifier: "editLocation", sender: nil)
+        if LocationClient.userLocation != nil {
+            let alert = UIAlertController(title: "Do you want to update your location?", message: "You have already posted a student location. Would you like to override your current location?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                self.performSegue(withIdentifier: "editLocation", sender: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+        } else {
+            performSegue(withIdentifier: "editLocation", sender: nil)
+        }
     }
     
 }

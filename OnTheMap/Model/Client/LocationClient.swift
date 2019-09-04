@@ -16,8 +16,9 @@ class LocationClient {
         static var user: UserDataResponse?
     }
     
-    static var studentLocation: [Location] = []
+    static var studentLocations: [Location] = []
     static var userLocation: Location?
+    static var userLocationUpdated: Bool = false
     
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
@@ -184,8 +185,6 @@ class LocationClient {
         let _ = taskForGETRequest(url: Endpoints.getUserData.url, authMethod: true, responseType: UserDataResponse.self) { response, error in
             if let response = response {
                 Auth.user = response
-                print(response);
-                print("------------------")
                 completion(true, nil)
             } else {
                 completion(false, error)
@@ -207,7 +206,8 @@ class LocationClient {
     
     class func setLocation(body: Location, completion: @escaping (Bool, Error?) -> Void) {
         taskForPOSTRequest(url: Endpoints.setStudentLocation.url, responseType: SetLocationResponse.self, body: body) { response, error in
-            if let _ = response {
+            if let res = response {
+                LocationClient.Auth.objectId = res.objectId
                 completion(true, nil)
             } else {
                 completion(false, error)
@@ -216,10 +216,12 @@ class LocationClient {
     }
     
     class func updateLocation(body: Location, completion: @escaping (Bool, Error?) -> Void) {
-        taskForPUTRequest(url: Endpoints.login.url, responseType: UpdateLocationResponse.self, body: body) { response, error in
+        taskForPUTRequest(url: Endpoints.updateStudentLocation.url, responseType: UpdateLocationResponse.self, body: body) { response, error in
             if let _ = response {
+                print(response)
                 completion(true, nil)
             } else {
+                print(error)
                 completion(false, error)
             }
         }

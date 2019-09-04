@@ -67,17 +67,29 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func finishAddingLocation(_ sender: Any) {
         let body = getUserLocation()
-        LocationClient.setLocation(body: body, completion: handleAddingLocation(success:error:))
+        if (LocationClient.userLocation != nil) {
+            LocationClient.updateLocation(body: body, completion: handleAddingLocation(success:error:))
+        } else {
+            LocationClient.setLocation(body: body, completion: handleAddingLocation(success:error:))
+        }
     }
     
     func handleAddingLocation(success: Bool, error: Error?) {
         if success {
-            LocationClient.userLocation = getUserLocation()
+            if let _ = LocationClient.userLocation {
+                LocationClient.studentLocations.removeLast()
+            }
+            let location = getUserLocation()
+            LocationClient.userLocation = location
+            LocationClient.userLocationUpdated = true
+            LocationClient.studentLocations.append(location)
+            
             self.dismiss(animated: false, completion: {
                 self.dismiss(animated: true, completion: nil)
             })
         } else {
             // Throw error
+            showAlert(message: error?.localizedDescription ?? "There was an error while posting the details")
         }
     }
     
@@ -88,5 +100,11 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func cancelAddLocation(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "There was an error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        show(alert, sender: nil)
     }
 }

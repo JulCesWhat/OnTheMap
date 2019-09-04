@@ -20,8 +20,7 @@ class EditViewController: UIViewController  {
     
     @IBAction func addLocation(_ sender: Any) {
         if (tfLocation.text ?? "").isEmpty || (tfUrl.text ?? "").isEmpty {
-            // Show error
-            
+            showAlert(message: "The location and (or) url cannot be empty")
         } else {
             OpenCageClient.search(query: tfLocation.text ?? "", completion: rerouteToAddLocation(result:error:))
         }
@@ -39,9 +38,13 @@ class EditViewController: UIViewController  {
             addController.userDetail = LocationClient.Auth.user
             self.navigationController!.pushViewController(addController, animated: true)
         } else {
-            // Show error
+            showAlert(message: error?.localizedDescription ?? "There was an error while getting the details")
         }
     }
     
-    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "There was an error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        show(alert, sender: nil)
+    }
 }
