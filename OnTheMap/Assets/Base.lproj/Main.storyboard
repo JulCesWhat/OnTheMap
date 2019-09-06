@@ -19,34 +19,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kS6-Tb-BHn" customClass="OtmTextField" customModule="OnTheMap" customModuleProvider="target">
-                                <rect key="frame" x="48" y="380" width="318" height="30"/>
+                                <rect key="frame" x="48" y="326" width="318" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eFd-Jj-58A" customClass="OtmTextField" customModule="OnTheMap" customModuleProvider="target">
-                                <rect key="frame" x="48" y="433" width="318" height="30"/>
+                                <rect key="frame" x="48" y="379" width="318" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uX-tb-J5K" customClass="OtmButton" customModule="OnTheMap" customModuleProvider="target">
-                                <rect key="frame" x="48" y="487" width="318" height="30"/>
+                                <rect key="frame" x="48" y="433" width="318" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="Login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kqh-y3-vvW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5m-N5-rZp">
-                                <rect key="frame" x="88" y="525" width="214" height="21"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Don't have an account? Sign Up." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gjn-Da-uTE">
+                                <rect key="frame" x="89" y="471" width="240" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -56,6 +56,7 @@
                         <outlet property="btnLogin" destination="6uX-tb-J5K" id="Enk-Js-19h"/>
                         <outlet property="tfEmail" destination="kS6-Tb-BHn" id="Brb-bw-kcn"/>
                         <outlet property="tfPassword" destination="eFd-Jj-58A" id="BMv-aN-V6P"/>
+                        <outlet property="tvSingUpLink" destination="gjn-Da-uTE" id="n6u-H2-q3Q"/>
                         <segue destination="CYT-gZ-sCe" kind="presentation" identifier="completeLogin" id="xDg-Wr-hXO"/>
                     </connections>
                 </viewController>
@@ -87,6 +88,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="bWx-h8-JRe">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="p2m-Ks-XVT">
+                            <connections>
+                                <action selector="logout:" destination="C54-qO-0IE" id="QSB-fv-jLM"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icon_addpin" id="ZOb-oh-hKi">
                                 <connections>
@@ -215,6 +221,11 @@
                         <viewLayoutGuide key="safeArea" id="4JI-u4-Qqx"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="uMb-JN-nr0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="0Sm-0x-F0E">
+                            <connections>
+                                <action selector="logout:" destination="UzI-vf-SOU" id="A2C-VO-Ty1"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icon_addpin" id="aus-PZ-vMo">
                                 <connections>
@@ -307,10 +318,11 @@
             </objects>
             <point key="canvasLocation" x="4084" y="783"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Add Location-->
         <scene sceneID="qfz-oF-UgX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qfJ-jI-68W" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTA-za-7RL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="AddNavigationController" title="Add Location" automaticallyAdjustsScrollViewInsets="NO" id="qfJ-jI-68W" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fmb-b3-TnK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -321,7 +333,6 @@
                         <segue destination="z5h-cu-2Pb" kind="relationship" relationship="rootViewController" id="isg-lg-6u9"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wTA-za-7RL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5606" y="783"/>
         </scene>
@@ -334,6 +345,6 @@
         <image name="icon_refresh" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YA6-C9-zyb"/>
+        <segue reference="bJB-iS-dli"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -98,6 +98,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    @IBAction func logout(_ sender: Any) {
+        LocationClient.logout {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
     @IBAction func editLocation(_ sender: Any) {
         if LocationClient.userLocation != nil {
             let alert = UIAlertController(title: "Do you want to update your location?", message: "You have already posted a student location. Would you like to override your current location?", preferredStyle: .alert)

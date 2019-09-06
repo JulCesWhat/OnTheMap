@@ -10,6 +10,7 @@
 		583651A0231F26B900B10942 /* OtmTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5836519F231F26B900B10942 /* OtmTextField.swift */; };
 		583651A2231F26CD00B10942 /* OtmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583651A1231F26CD00B10942 /* OtmButton.swift */; };
 		583651A4231F275400B10942 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583651A3231F275400B10942 /* Colors.swift */; };
+		5854E2592321EA1300C398E2 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5854E2582321EA1300C398E2 /* ErrorResponse.swift */; };
 		58E7F884231A10E600E2D63C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E7F883231A10E600E2D63C /* AppDelegate.swift */; };
 		58E7F889231A10E600E2D63C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58E7F887231A10E600E2D63C /* Main.storyboard */; };
 		58E7F88B231A10E600E2D63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58E7F88A231A10E600E2D63C /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		5836519F231F26B900B10942 /* OtmTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtmTextField.swift; sourceTree = "<group>"; };
 		583651A1231F26CD00B10942 /* OtmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtmButton.swift; sourceTree = "<group>"; };
 		583651A3231F275400B10942 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		5854E2582321EA1300C398E2 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		58E7F880231A10E600E2D63C /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58E7F883231A10E600E2D63C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58E7F888231A10E600E2D63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				58E7F8AD231AE72A00E2D63C /* Location.swift */,
 				58E7F8B1231AEC4700E2D63C /* LoginResponse.swift */,
+				5854E2582321EA1300C398E2 /* ErrorResponse.swift */,
 				58E7F8B3231AEE0B00E2D63C /* LogoutResponse.swift */,
 				58E7F8B7231AF06C00E2D63C /* UserDataResponse.swift */,
 				58E7F8B5231AEE8B00E2D63C /* LocationResponse.swift */,
@@ -261,6 +264,7 @@
 				583651A2231F26CD00B10942 /* OtmButton.swift in Sources */,
 				58E7F89C231ACD8D00E2D63C /* LoginViewController.swift in Sources */,
 				58E7F896231AC52300E2D63C /* TableViewController.swift in Sources */,
+				5854E2592321EA1300C398E2 /* ErrorResponse.swift in Sources */,
 				58E7F8B8231AF06C00E2D63C /* UserDataResponse.swift in Sources */,
 				58E7F8A8231AE4FF00E2D63C /* LoginRequest.swift in Sources */,
 				58E7F8B6231AEE8B00E2D63C /* LocationResponse.swift in Sources */,

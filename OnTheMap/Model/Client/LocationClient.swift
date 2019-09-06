@@ -75,16 +75,23 @@ class LocationClient {
                     }
                 }
             } catch {
-//                do {
-//                    let errorResponse = try decoder.decode(TMDBResponse.self, from: data) as Error
-//                    DispatchQueue.main.async {
-//                        completion(nil, errorResponse)
-//                    }
-//                } catch {
+                if authMethod {
+                    do {
+                        let newData = data.subdata(in: 5..<data.count)
+                        let errorResponse = try decoder.decode(ErrorResponse.self, from: newData) as Error
+                        DispatchQueue.main.async {
+                            completion(nil, errorResponse)
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            completion(nil, error)
+                        }
+                    }
+                } else {
                     DispatchQueue.main.async {
                         completion(nil, error)
                     }
-//                }
+                }
             }
         }
         task.resume()
@@ -120,16 +127,23 @@ class LocationClient {
                 }
                 
             } catch {
-//                do {
-//                    let errorResponse = try decoder.decode(TMDBResponse.self, from: data) as Error
-//                    DispatchQueue.main.async {
-//                        completion(nil, errorResponse)
-//                    }
-//                } catch {
+                if authMethod {
+                    do {
+                        let newData = data.subdata(in: 5..<data.count)
+                        let errorResponse = try decoder.decode(ErrorResponse.self, from: newData) as Error
+                        DispatchQueue.main.async {
+                            completion(nil, errorResponse)
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            completion(nil, error)
+                        }
+                    }
+                } else {
                     DispatchQueue.main.async {
                         completion(nil, error)
                     }
-//                }
+                }
             }
         }
         task.resume()
@@ -218,13 +232,38 @@ class LocationClient {
     class func updateLocation(body: Location, completion: @escaping (Bool, Error?) -> Void) {
         taskForPUTRequest(url: Endpoints.updateStudentLocation.url, responseType: UpdateLocationResponse.self, body: body) { response, error in
             if let _ = response {
-                print(response)
                 completion(true, nil)
             } else {
-                print(error)
                 completion(false, error)
             }
         }
+    }
+    
+    class func logout(completion: @escaping () -> Void) {
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            Auth.objectId = ""
+            Auth.userId = ""
+            Auth.user = nil
+            
+            studentLocations = []
+            userLocation = nil
+            userLocationUpdated = false
+            completion()
+        }
+        task.resume()
     }
     
 }

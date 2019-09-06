@@ -66,10 +66,8 @@ class OpenCageClient {
     }
     
     class func search(query: String, completion: @escaping ([Result], Error?) -> Void) -> Void {
-//        print(Endpoints.getCoordinates(query).url)
         let _ = taskForGETRequest(url: Endpoints.getCoordinates(query).url, responseType: OpenCageResponse.self) { response, error in
             if let response = response {
-//                print(response)
                 completion(response.results, nil)
             } else {
                 completion([], error)

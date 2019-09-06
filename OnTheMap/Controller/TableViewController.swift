@@ -39,6 +39,13 @@ class TableViewController: UITableViewController {
         }
     }
     
+    @IBAction func logout(_ sender: Any) {
+        LocationClient.logout {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     
     @IBAction func editLocation(_ sender: Any) {
         if LocationClient.userLocation != nil {

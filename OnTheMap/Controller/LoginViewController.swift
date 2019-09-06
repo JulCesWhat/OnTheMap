@@ -13,9 +13,30 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var tvSingUpLink: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createSignUpLink()
+    }
+    
+    func createSignUpLink() {
+        let attributedString = NSMutableAttributedString(string: "Don't have an account? Sign Up.")
+        let url = URL(string: "https://auth.udacity.com/sign-up")!
+        let linkRange = (attributedString.string as NSString).range(of: "Sign Up")
+        
+        // Set the 'click here' substring to be the link
+        attributedString.setAttributes([.link: url], range: linkRange)
+        
+        self.tvSingUpLink.attributedText = attributedString
+        self.tvSingUpLink.isUserInteractionEnabled = true
+        self.tvSingUpLink.isEditable = false
+        
+        // Set how links should appear: blue and underlined
+        self.tvSingUpLink.linkTextAttributes = [
+            .foregroundColor: UIColor.blue,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
     }
     
     @IBAction func Login(_ sender: Any) {
