@@ -20,6 +20,16 @@ class LoginViewController: UIViewController {
         createSignUpLink()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeToKeyboardNotifications()
+    }
+    
     func createSignUpLink() {
         let attributedString = NSMutableAttributedString(string: "Don't have an account? Sign Up.")
         let url = URL(string: "https://auth.udacity.com/sign-up")!
@@ -28,12 +38,12 @@ class LoginViewController: UIViewController {
         // Set the 'click here' substring to be the link
         attributedString.setAttributes([.link: url], range: linkRange)
         
-        self.tvSingUpLink.attributedText = attributedString
-        self.tvSingUpLink.isUserInteractionEnabled = true
-        self.tvSingUpLink.isEditable = false
+        tvSingUpLink.attributedText = attributedString
+        tvSingUpLink.isUserInteractionEnabled = true
+        tvSingUpLink.isEditable = false
         
         // Set how links should appear: blue and underlined
-        self.tvSingUpLink.linkTextAttributes = [
+        tvSingUpLink.linkTextAttributes = [
             .foregroundColor: UIColor.blue,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ]
@@ -47,6 +57,55 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            if tfPassword.isEditing {
+                view.frame.origin.y -= keyboardHeight / 4
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        view.frame.origin.y = 0
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    func unsubscribeToKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
     func handleLoginResponse(success: Bool, error: Error?) {
         if success {
             LocationClient.getUserData(completion: handleGetUserDataResponse(success:error:))
@@ -57,15 +116,11 @@ class LoginViewController: UIViewController {
     
     func handleGetUserDataResponse(success: Bool, error: Error?) {
         if success {
+            tfEmail.text = ""
+            tfPassword.text = ""
             performSegue(withIdentifier: "completeLogin", sender: nil)
         } else {
             showAlert(message: error?.localizedDescription ?? "There was an error while getting the details")
         }
-    }
-    
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "There was an error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        show(alert, sender: nil)
     }
 }

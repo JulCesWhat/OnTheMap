@@ -10,18 +10,13 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return LocationClient.studentLocations.count
+        return MapLocation.studentLocations.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell")!
-        let location = LocationClient.studentLocations[(indexPath as NSIndexPath).row]
+        let location = MapLocation.studentLocations[(indexPath as NSIndexPath).row]
         
         // Set the name and image
         cell.textLabel?.text = location.firstName + " " + location.lastName
@@ -32,7 +27,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let location = LocationClient.studentLocations[(indexPath as NSIndexPath).row]
+        let location = MapLocation.studentLocations[(indexPath as NSIndexPath).row]
         if !location.mediaURL.isEmpty {
             let app = UIApplication.shared
             app.open(URL(string: location.mediaURL)!)
@@ -48,7 +43,7 @@ class TableViewController: UITableViewController {
     }
     
     @IBAction func editLocation(_ sender: Any) {
-        if LocationClient.userLocation != nil {
+        if MapLocation.userLocation != nil {
             let alert = UIAlertController(title: "Do you want to update your location?", message: "You have already posted a student location. Would you like to override your current location?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
@@ -61,4 +56,5 @@ class TableViewController: UITableViewController {
             performSegue(withIdentifier: "editLocation", sender: nil)
         }
     }
+    
 }

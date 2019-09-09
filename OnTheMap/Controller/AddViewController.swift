@@ -42,6 +42,12 @@ class AddViewController: UIViewController, MKMapViewDelegate {
         
         // When the array is complete, we add the annotations to the map.
         self.mapView.addAnnotations(annotations)
+        
+        let location = CLLocationCoordinate2DMake(newResultLocation.geometry.lat, newResultLocation.geometry.lng)
+        let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+        let region =  MKCoordinateRegion(center: location, span: span)
+        self.mapView.setRegion(region, animated: true)
+
     }
     
     // Here we create a view with a "right callout accessory view". You might choose to look into other
@@ -67,7 +73,7 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func finishAddingLocation(_ sender: Any) {
         let body = getUserLocation()
-        if (LocationClient.userLocation != nil) {
+        if (MapLocation.userLocation != nil) {
             LocationClient.updateLocation(body: body, completion: handleAddingLocation(success:error:))
         } else {
             LocationClient.setLocation(body: body, completion: handleAddingLocation(success:error:))
@@ -76,13 +82,13 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     
     func handleAddingLocation(success: Bool, error: Error?) {
         if success {
-            if let _ = LocationClient.userLocation {
-                LocationClient.studentLocations.removeLast()
+            if let _ = MapLocation.userLocation {
+                MapLocation.studentLocations.removeLast()
             }
             let location = getUserLocation()
-            LocationClient.userLocation = location
-            LocationClient.userLocationUpdated = true
-            LocationClient.studentLocations.append(location)
+            MapLocation.userLocation = location
+            MapLocation.userLocationUpdated = true
+            MapLocation.studentLocations.append(location)
             
             self.dismiss(animated: false, completion: {
                 self.dismiss(animated: true, completion: nil)
@@ -100,11 +106,5 @@ class AddViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func cancelAddLocation(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "There was an error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        show(alert, sender: nil)
     }
 }

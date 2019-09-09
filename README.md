@@ -1,23 +1,25 @@
 # Pre-work - *OnTheMap*
 
-**OnTheMap** is a tip calculator application for iOS.
+**OnTheMap** is a map application for iOS.
 
 Submitted by: **Cesar Whatley**
 
-Time spent: **3** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is complete:
 
-* [x] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
-
-The following **optional** features are implemented:
-* [x] Settings page to change the default tip percentage.
-* [ ] UI animations
-* [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [x] The app has a login view that accepts email and password strings from users, with a “Login” button.
+* [x] The app downloads the 100 most recent locations posted by students.
+* [x] The struct has an init() method that accepts a dictionary as an argument, or the struct conforms to the Codable protocol.
+* [x] The app gracefully handles a failure to download student locations.
+* [x] The table is sorted in order of most recent to oldest update.
+* [x] The app allows users to add a URL to be included with their location.
+* [x] 
+The app provides a readily accessible "Submit" button that the user can tap to post the information to the server.
+* [x] An activity indicator is displayed during geocoding, and returns to normal state on completion.
+* [x] The app shows a placemark on a map via the geocoded response. The app zooms the map into an appropriate region.
 
 The following **additional** features are implemented:
 
@@ -33,7 +35,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Faced some problems when there was a local commit and a remote commit, but the fix was to not do them at the same time.
+Had a few issues with setting the region on the map when user tries to add new location.
 
 ## License
 

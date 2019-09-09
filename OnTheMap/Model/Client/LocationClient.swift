@@ -16,10 +16,6 @@ class LocationClient {
         static var user: UserDataResponse?
     }
     
-    static var studentLocations: [Location] = []
-    static var userLocation: Location?
-    static var userLocationUpdated: Bool = false
-    
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
         
@@ -33,7 +29,7 @@ class LocationClient {
         var stringValue: String {
             switch self {
             case .getStudentLocations:
-                return Endpoints.base + "/StudentLocation?limit=5"
+                return Endpoints.base + "/StudentLocation?limit=100&order=-updatedAt"
             case .setStudentLocation:
                 return Endpoints.base + "/StudentLocation"
             case .updateStudentLocation:
@@ -258,9 +254,9 @@ class LocationClient {
             Auth.userId = ""
             Auth.user = nil
             
-            studentLocations = []
-            userLocation = nil
-            userLocationUpdated = false
+            MapLocation.studentLocations = []
+            MapLocation.userLocation = nil
+            MapLocation.userLocationUpdated = false
             completion()
         }
         task.resume()

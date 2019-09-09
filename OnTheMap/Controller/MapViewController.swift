@@ -16,42 +16,46 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        if LocationClient.studentLocations.count == 0 {
+        if MapLocation.studentLocations.count == 0 {
             LocationClient.getUserLocations(completion: getUserLocations(locations:error:))
         } else {
-            getUserLocations(locations: LocationClient.studentLocations, error: nil)
+            getUserLocations(locations: MapLocation.studentLocations, error: nil)
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if LocationClient.userLocationUpdated {
+        if MapLocation.userLocationUpdated {
             mapView.removeAnnotations(mapView.annotations)
-            getUserLocations(locations: LocationClient.studentLocations, error: nil)
-            LocationClient.userLocationUpdated = false
+            getUserLocations(locations: MapLocation.studentLocations, error: nil)
+            MapLocation.userLocationUpdated = false
         }
     }
     
     func getUserLocations(locations: [Location], error: Error?) {
-        // We will create an MKPointAnnotation for each dictionary in "locations". The
-        // point annotations will be stored in this array, and then provided to the map view.
-        var annotations = [MKPointAnnotation]()
-        
-        // The "locations" array is loaded with the sample data below. We are using the dictionaries
-        // to create map annotations. This would be more stylish if the dictionaries were being
-        // used to create custom structs. Perhaps StudentLocation structs.
-        for location in locations {
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
-            let annotation = createAnnotation(location: location)
+        if locations.count > 0 {
+            // We will create an MKPointAnnotation for each dictionary in "locations". The
+            // point annotations will be stored in this array, and then provided to the map view.
+            var annotations = [MKPointAnnotation]()
             
-            // Finally we place the annotation in an array of annotations.
-            annotations.append(annotation)
+            // The "locations" array is loaded with the sample data below. We are using the dictionaries
+            // to create map annotations. This would be more stylish if the dictionaries were being
+            // used to create custom structs. Perhaps StudentLocation structs.
+            for location in locations {
+                // Here we create the annotation and set its coordiate, title, and subtitle properties
+                let annotation = createAnnotation(location: location)
+                
+                // Finally we place the annotation in an array of annotations.
+                annotations.append(annotation)
+            }
+            
+            MapLocation.studentLocations = locations
+            
+            // When the array is complete, we add the annotations to the map.
+            self.mapView.addAnnotations(annotations)
+        } else {
+            showAlert(message: error?.localizedDescription ?? "There was an error while the locations")
         }
-        
-        LocationClient.studentLocations = locations
-        
-        // When the array is complete, we add the annotations to the map.
-        self.mapView.addAnnotations(annotations)
     }
     
     func createAnnotation(location: Location) -> MKPointAnnotation {
@@ -107,7 +111,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func editLocation(_ sender: Any) {
-        if LocationClient.userLocation != nil {
+        if MapLocation.userLocation != nil {
             let alert = UIAlertController(title: "Do you want to update your location?", message: "You have already posted a student location. Would you like to override your current location?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
